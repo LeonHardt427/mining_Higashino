@@ -20,29 +20,22 @@ file_path = os.getcwd() + '/text_data/'
 file_name = '《再一个谎言》之 寒冷的灼热.txt'
 
 # ------------------------------------------
-# Test
-# ------------------------------------------
-
-# text = "我来自浙江大学，是浙江大学的学生"
-# seg_list = jieba.cut(text, cut_all=True)
-# print("全模式：" + ','.join(seg_list))
-#
-# text = "我来自浙江大学，是浙江大学的学生"
-# seg_list = jieba.cut(text, cut_all=False)
-# print("全模式：" + ','.join(seg_list))
-
-# ------------------------------------------
 # article cut
-# ------------------------------------------
 
 
 def read_file_cut(path, data_name):
-
     """
-    read files and cut
-    :return: None
-    """
+    Parameters
+    ----------
+    path: str
+        file path
+    data_name:
+        text name
 
+    Returns
+    -------
+    None
+    """
     source_file = path + '/' + data_name
     source = open(source_file, 'r')
 
@@ -66,6 +59,9 @@ def read_file_cut(path, data_name):
         line = source.readline()
 
     print('END ALL')
+
+# -----------------------------------
+# main
 
 
 if __name__ == '__main__':
