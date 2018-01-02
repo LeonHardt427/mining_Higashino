@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2017/12/26 19:54
+# @Time    : 2018/1/2 20:37
 # @Author  : LeonHardt
-# @File    : jieba_test.py
+# @File    : jieba_cut.py
+
 
 import os
 import sys
@@ -16,8 +17,6 @@ import jieba.analyse
 # -------------------------------------------
 jieba.load_userdict('my_dict.txt')
 
-file_path = os.getcwd() + '/text_data/'
-file_name = '《再一个谎言》之 寒冷的灼热.txt'
 
 # ------------------------------------------
 # article cut
@@ -35,6 +34,7 @@ def read_file_cut(path, data_name):
     Returns
     -------
     None
+    cut the passage and write
     """
     source_file = path + '/' + data_name
     source = open(source_file, 'r')
@@ -51,7 +51,7 @@ def read_file_cut(path, data_name):
     line = source.readline()
     line = line.rstrip('\n')
     while line!="":
-        seg_list = jieba.cut(line, cut_all=False)
+        seg_list = jieba.cut(line, cut_all=False)   # cut the passage
         output = ' '.join(list(seg_list))
         print(output)
         print('-------------------------')
@@ -65,10 +65,7 @@ def read_file_cut(path, data_name):
 
 
 if __name__ == '__main__':
+    file_path = os.getcwd() + '/text_data/'
+    file_name = '《再一个谎言》之 寒冷的灼热.txt'
     read_file_cut(file_path, file_name)
-
-
-
-
-
 
