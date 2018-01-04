@@ -2,9 +2,17 @@
 # @Time    : 2018/1/4 12:55
 # @Author  : LeonHardt
 # @File    : word_count.py
+"""
+function:
+    count words and draw word-cloud
+from:
+    ~/text_data/out_file/*.txt   (already cut)
+to:
+    ~/word_cloud/*.png
+"""
+
 
 import os
-import codecs
 
 import numpy as np
 import pandas as pd
@@ -16,7 +24,7 @@ from wordcloud import WordCloud
 # ----------------------------------------
 # read article
 path = os.getcwd()
-file_path = path + '/text_data/out_file/《再一个谎言》之 寒冷的灼热.txt'
+file_path = path + '/text_data/out_file/白马山庄杀人事件.txt'
 with open(file_path, 'r', encoding='utf-8') as file:
     content = file.read()
 segments = []

@@ -5,9 +5,10 @@
 
 
 import os
-import sys
+import glob
 import codecs
-import re
+
+
 import jieba
 import jieba.analyse
 
@@ -15,14 +16,14 @@ import jieba.analyse
 # file direction set
 # load user_dict
 # -------------------------------------------
-jieba.load_userdict('my_dict.txt')
+jieba.load_userdict('all_dict.txt')
 
 
 # ------------------------------------------
 # article cut
 
 
-def read_file_cut(path, data_name):
+def file_cut(path, data_name):
     """
     Parameters
     ----------
@@ -36,7 +37,7 @@ def read_file_cut(path, data_name):
     None
     cut the passage and write
     """
-    source_file = path + '/' + data_name
+    source_file = path + '/' + data_name    # data name
     source = open(source_file, 'r')
 
     out_path = path + '/out_file/'
@@ -60,12 +61,14 @@ def read_file_cut(path, data_name):
 
     print('END ALL')
 
-# -----------------------------------
+# ----------------------------------------------------
 # main
 
 
 if __name__ == '__main__':
     file_path = os.getcwd() + '/text_data/'
-    file_name = '《再一个谎言》之 寒冷的灼热.txt'
-    read_file_cut(file_path, file_name)
+    file_list = glob.iglob(file_path + '*.txt')
+    for file in file_list:
+        file_name = file.split('\\')[-1]
+        file_cut(file_path, file_name)
 
