@@ -31,7 +31,6 @@ def file_cut(path, data_name):
         file path
     data_name:
         text name
-
     Returns
     -------
     None
@@ -48,17 +47,27 @@ def file_cut(path, data_name):
     if os.path.exists(out_file):
         os.remove(out_file)
 
+    stop_dict = []                          # stop dict
+    with open('stop_words_dict.txt', 'r', encoding='utf-8') as dic:
+        line = dic.readline()
+        while line != "":
+            line = line.rstrip('\n')
+            stop_dict.append(line)
+            line = dic.readline()
+
     out = codecs.open(out_file, 'w', 'utf-8')
     line = source.readline()
-    line = line.rstrip('\n')
     while line!="":
-        seg_list = jieba.cut(line, cut_all=False)   # cut the passage
-        output = ' '.join(list(seg_list))
+        line = line.rstrip('\n')
+        line.replace('\t', '').replace('\n', '').replace(' ', '')
+        seg_list = list(jieba.cut(line, cut_all=False))   # cut the passage
+        for word in seg_list:
+            if word in stop_dict:
+                seg_list.remove(word)
+        output = ' '.join(seg_list)
         print(output)
-        print('-------------------------')
-        out.write(output + '\r\n')
+        out.write(output)
         line = source.readline()
-
     print('END ALL')
 
 # ----------------------------------------------------
@@ -66,9 +75,10 @@ def file_cut(path, data_name):
 
 
 if __name__ == '__main__':
-    file_path = os.getcwd() + '/text_data/'
-    file_list = glob.iglob(file_path + '*.txt')
-    for file in file_list:
-        file_name = file.split('\\')[-1]
-        file_cut(file_path, file_name)
-
+    file_path = os.getcwd() + '/lib/text_data/my_use/'
+    # file_list = glob.iglob(file_path + '*.txt')
+    # for file in file_list:
+    #     file_name = file.split('\\')[-1]
+    #     file_cut(file_path, file_name)
+    #
+    file_cut(file_path, '我杀了他.txt')
