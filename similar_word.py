@@ -29,7 +29,7 @@ def simliar_word(word, model, topn=20):
 
 
 if __name__ == '__main__':
-    words = ['东野圭吾', '凶手', '警察', '没有', '发现', '刀', '凶器', '老师', '眼睛', '咖啡', '侦探', '雪穗', '桐原洋介']
+    words = ['东野圭吾', '凶手', '警察', '没有', '发现', '刀子', '凶器', '老师', '眼睛', '咖啡', '侦探', '雪穗', '桐原洋介']
     model_path = os.getcwd() + '/model/Word2Vec_model/' + 'all_stop_article.model'
     for word in words:
         results = simliar_word(word, model_path, topn=10)

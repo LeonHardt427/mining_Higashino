@@ -37,7 +37,7 @@ def file_cut(path, data_name):
     cut the passage and write
     """
     source_file = path + '/' + data_name    # data name
-    source = codecs.open(source_file, 'r', encoding='utf-8')
+    source = codecs.open(source_file, 'r', encoding='GBK')
 
     out_path = path + '/out_file/'
     if os.path.exists(out_path) is not True:
@@ -76,9 +76,9 @@ def file_cut(path, data_name):
 
 if __name__ == '__main__':
     file_path = os.getcwd() + '/lib/text_data/my_use/'
-    # file_list = glob.iglob(file_path + '*.txt')
-    # for file in file_list:
-    #     file_name = file.split('\\')[-1]
-    #     file_cut(file_path, file_name)
-    #
-    file_cut(file_path, '我杀了他.txt')
+    file_list = glob.iglob(file_path + '*.txt')
+    for file in file_list:
+        file_name = file.split('\\')[-1]
+        file_cut(file_path, file_name)
+
+    # file_cut(file_path, '我杀了他.txt')

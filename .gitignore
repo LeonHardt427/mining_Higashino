@@ -5,3 +5,6 @@ __pycache__/*
 *.csv
 *.png
 *.model
+model/*
+pic/*
+lib/*

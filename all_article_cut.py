@@ -9,14 +9,14 @@ import codecs
 
 import jieba
 
-path = os.getcwd() + '/text_data/out_file/all/'
+path = os.getcwd() + '/lib/text_data/out_file/all/'
 if os.path.exists(path) is not True:
     os.makedirs(path)
 
 if os.path.exists(path+'all_article.txt') is not True:
     # ----------------------------------------------------------------------------------
     # cut all article
-    file_path = os.getcwd() + '/text_data/out_file/'
+    file_path = os.getcwd() + '/lib/text_data/out_file/'
     file_name_list = glob.iglob(file_path + '*.txt')
     # --------------------------------------
     # stop words dictionary   (word2vec not use stop_dict)
@@ -50,7 +50,7 @@ if os.path.exists(path+'all_article.txt') is not True:
 if os.path.exists(path+'all_stop_article.txt') is not True:
     # ----------------------------------------------------------------------------------
     # cut all article
-    file_path = os.getcwd() + '/text_data/out_file/'
+    file_path = os.getcwd() + '/lib/text_data/out_file/'
     file_name_list = glob.iglob(file_path + '*.txt')
     # --------------------------------------
     # stop words dictionary   (word2vec not use stop_dict)
