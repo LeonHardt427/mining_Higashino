@@ -37,7 +37,7 @@ def file_cut(path, data_name):
     cut the passage and write
     """
     source_file = path + '/' + data_name    # data name
-    source = codecs.open(source_file, 'r', encoding='GBK')
+    source = codecs.open(source_file, 'r', encoding='utf-8')
 
     out_path = path + '/out_file/'
     if os.path.exists(out_path) is not True:

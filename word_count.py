@@ -22,6 +22,7 @@ from wordcloud import WordCloud
 
 # -------------------------------------------------------------------------------------
 # word count function
+jieba.load_userdict('all_dict.txt')
 
 
 def word_count(file_path, file_name, out_path, stop_word='stop_words_dict.txt', word_cloud=False):
