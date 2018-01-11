@@ -6,6 +6,7 @@
 import os
 import glob
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
@@ -19,7 +20,7 @@ for name_text in name_list:
     name_str = name_text.split('\\')[-1].split('.')[0]
     name.append(name_str)
 
-save_path = os.getcwd()+'/model/Doc2Vec_model/douban_corpus_np_lda.txt'
+save_path = os.getcwd()+'/model/Doc2Vec_model/corpus_np_lda.txt'
 lda = np.loadtxt(save_path, delimiter=',')
 y = np.arange(56)
 
@@ -45,10 +46,16 @@ y = np.arange(56)
 
 # ---------------------------------------------------------------------
 # KMeans
-# km = KMeans(n_clusters=4, init='random',n_init=10, max_iter=300, random_state=0)
-# y_km = km.fit_predict(lda)
-# print(y_km)
-# # print(y_km.shape)
-# for index, kmm in enumerate(y_km):
-#     if kmm != 1 :
-#         print(name[index]+' is '+ str(kmm))
+km = KMeans(n_clusters=5, init='random',n_init=10, max_iter=300, random_state=0)
+y_km = km.fit_predict(lda)
+print(y_km)
+# print(y_km.shape)
+result = {}
+for index, kmm in enumerate(y_km):
+    result[name[index]] = kmm
+    # if kmm != 1 :
+    #     print(name[index]+' is '+ str(kmm))
+
+result = pd.Series(result)
+print(result)
+result.to_excel( os.getcwd()+'/model/kmeans.xls')
